@@ -1,0 +1,4 @@
+Dataset: trivial
+Initial centroids coordinates:
+[(0, 18), (9, 11), (3, 5), (22, 5), (22, 14)]
+Number of initial centroids (K): 5

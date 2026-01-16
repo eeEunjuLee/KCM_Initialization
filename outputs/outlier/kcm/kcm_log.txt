@@ -1,0 +1,4 @@
+Dataset: outlier
+Initial centroids coordinates:
+[(30, 30), (9, 11)]
+Number of initial centroids (K): 2

@@ -1,0 +1,4 @@
+Dataset: random
+Initial centroids coordinates:
+[(9, 9), (39, 29), (70, 47), (87, 79), (44, 81), (12, 99), (88, 14)]
+Number of initial centroids (K): 7
