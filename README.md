@@ -1,7 +1,10 @@
 > **Project Period: April 2024 – May 2024**
+> 
+> This work was presented as a poster at the **2024 KSIAM Spring Conference**  
+> (Poster Session: May 18, 2024; Conference dates: May 17–19, 2024).
 ---
 # Title: KCM Initialization for K-means Clustering
-> **Method for Determining the Initial Number of Cluters in K-means Clustering**
+> **Method for Determining the Initial Number of Clusters in K-means Clustering**
 
 ---
 ## Overview
@@ -36,6 +39,64 @@ Important characteristics:
 - KCM is **not** a clustering algorithm
 - KCM is used strictly as an **initialization heuristic**
 - Final clustering is performed using standard K-means
+
+Pseudocode:
+> **Input:** ```2-dimensional dataset (number of data points: n)``` 
+> 
+> **Output:** ```initial_centroids```
+> 
+> **Step 1:** 
+> > Set ```initial_centroids = [] ```
+> 
+> **Step 2:**
+> > Set ```center = ( (x1 + x2 + ... + xn) / n , (y1 + y2 + ... + yn) / n )```
+> 
+> **Step 3:** 
+> > Set ```max_distance = distance``` from ```center``` to the farthest point
+> 
+> **Step 4:**
+> > Set ```C1``` to the farthest point from the ```center``` (```C1``` is the first circle point)
+> 
+> **Step 5:** 
+> > Append ```C1``` to ```initial_centroids```
+> 
+> **Step 6:** 
+> > Set ```radius = max_distance / 2```
+> 
+> **Step 7:** 
+> > Set ```outside_points``` to include all points whose distance from ```C1``` is greater than the ```radius```
+> 
+> **Step 8:** 
+> > Set ```circle_center``` to the nearest point to ```C1``` in ```outside_points```
+> 
+> **Step 9:** 
+> > Append ```circle_center``` to ```initial_centroids```
+> 
+> **Step 10:**
+> > Update ```outside_points``` as points outside the circle centered at ```circle_center``` with ```radius```
+> 
+> **Step 11:**
+> > If ```len(outside_points) < 1```, then output ```initial_centroids``` and stop
+> 
+> **Step 12:**
+> > While ```len(outside_points) > 1```, repeat **Steps 13** to **17**
+> > >  **Step 13:** 
+> > > > Set ```next_circle_center``` to the nearest point to ```circle_center``` in ```outside_points```
+> > >
+> > > **Step 14:**
+> > > > Append ```next_circle_center``` to ```initial_centroids```
+> > >
+> > > **Step 15:**
+> > > > Update ```outside_points``` as points outside the circle centered at ```next_circle_center``` with ```radius```
+> > >
+> > > **Step 16:**
+> > > > If ```len(outside_points) < 1```, then output ```initial_centroids``` and stop
+> > >
+> > > **Step 17:**
+> > > > Set ```circle_center = next_circle_center``` (Update ```circle_center```)
+>
+> **Note:** The radius is fixed throughout the procedure and is derived from the
+maximum distance to the global center.
 
 
 ---
@@ -78,7 +139,10 @@ Visualization results are saved under the `outputs/` directory.
     ```bash
     pip install -r requirements.txt
     ```
-
+- Run all experiments:
+    ```bash
+    python main.py
+    ```
 
 ---
 ## Project Structure
